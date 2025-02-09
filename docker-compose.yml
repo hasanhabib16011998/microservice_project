@@ -31,6 +31,26 @@ services:
     networks:
       - mysql-network
     restart: always
+  
+  auth_service:
+    build:
+      context: ./microservice_project/auth/
+      dockerfile: Dockerfile  # Path to your Flask application's Dockerfile
+    container_name: auth_service
+    environment:
+      MYSQL_HOST: mysql  # Connect to the MySQL container (docker service name)
+      MYSQL_USER: my_user
+      MYSQL_PASSWORD: user_password
+      MYSQL_DB: my_database
+      JWT_SECRET: leogalerugholrgnjlaebn
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+    networks:
+      - mysql-network
+    restart: always
+
 
 volumes:
   mysql-data:
