@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-configmap
+  namespace: default
+data:
+  MYSQL_HOST: host.minikube.internal
+  MYSQL_USER: my_user
+  MYSQL_DB: my_database
+  JWT_SECRET: "leogalerugholrgnjlaebn"
+  MYSQL_PORT: "3306"
